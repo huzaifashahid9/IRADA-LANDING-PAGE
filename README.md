@@ -1,4 +1,4 @@
-# IRADA landing page
+# IRADA landing page 
 
 The landing page for **IRADA** (ارادہ, "intention"): a brain-signal headset, a phone app and a careful AI agent that let people living with paralysis call family, send a message or ask for help, using commands they have practised.
 
