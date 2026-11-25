@@ -4,7 +4,7 @@ The landing page for **IRADA** (ارادہ, "intention"): a brain-signal headset
 
 > IRADA is an assistive prototype, not a medical device.
 
-Built by **[Anas](https://github.com/anashanif123)** for Team Hexabytes.
+Built by **[huzaifashahid9](https://github.com/huzaifashahid9)** for Team Hexabytes.
 
 ## Tech stack
 

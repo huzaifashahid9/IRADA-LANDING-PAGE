@@ -4,8 +4,8 @@
   "private": true,
   "description": "Landing page for IRADA, a brain-signal headset, phone app and AI agent for people living with paralysis.",
   "author": {
-    "name": "Anas",
-    "url": "https://github.com/anashanif123"
+    "name": "huzaifashahid9",
+    "url": "https://github.com/huzaifashahid9"
   },
   "license": "MIT",
   "repository": {
@@ -16,9 +16,9 @@
     "node": ">=20.9.0"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "node init && next dev",
+    "build": "node init && next build",
+    "start": "node init && next start",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "format": "prettier --write .",

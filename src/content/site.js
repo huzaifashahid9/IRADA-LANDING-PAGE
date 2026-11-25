@@ -27,8 +27,8 @@ export const site = {
   },
   /** Credit shown in the footer. */
   author: {
-    name: 'Anas',
-    url: 'https://github.com/anashanif123',
+    name: 'huzaifashahid9',
+    url: 'https://github.com/huzaifashahid9',
   },
 };
 
