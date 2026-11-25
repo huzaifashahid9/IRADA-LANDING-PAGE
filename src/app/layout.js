@@ -20,8 +20,8 @@ export const metadata = {
   },
   description: site.description,
   applicationName: site.name,
-  authors: [{ name: site.author.name, url: site.author.url }, { name: site.team }],
-  creator: site.author.name,
+  authors: [...site.authors.map(({ name, url }) => ({ name, url })), { name: site.team }],
+  creator: site.authors.map((person) => person.name).join(' and '),
   keywords: [
     'IRADA',
     'brain-computer interface',

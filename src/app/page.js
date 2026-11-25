@@ -56,7 +56,7 @@ export default function HomePage() {
         links={footerLinks}
         disclaimer={site.disclaimer}
         team={site.team}
-        author={site.author}
+        authors={site.authors}
       />
     </>
   );

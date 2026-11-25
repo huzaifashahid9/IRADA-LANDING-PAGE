@@ -48,6 +48,32 @@ export default function Contact() {
                   <Icon name="phone" size={18} />
                   {person.phone}
                 </a>
+                {(person.github || person.linkedin) && (
+                  <span className={styles.socials}>
+                    {person.github && (
+                      <a
+                        href={person.github}
+                        className={styles.social}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${person.name} on GitHub (opens in a new tab)`}
+                      >
+                        <Icon name="github" size={18} />
+                      </a>
+                    )}
+                    {person.linkedin && (
+                      <a
+                        href={person.linkedin}
+                        className={styles.social}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${person.name} on LinkedIn (opens in a new tab)`}
+                      >
+                        <Icon name="linkedin" size={18} />
+                      </a>
+                    )}
+                  </span>
+                )}
               </li>
             ))}
           </ul>
