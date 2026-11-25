@@ -1,0 +1,67 @@
+.section {
+  padding-block: var(--section-space);
+  background: var(--tone-bg);
+  color: var(--tone-fg);
+}
+
+.flush {
+  padding-block: 0;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.light,
+.soft {
+  --tone-bg: var(--white);
+  --tone-fg: var(--ink);
+  --tone-eyebrow: var(--violet-400);
+  --tone-lead: var(--grey-700);
+  --tone-muted: var(--grey-600);
+  --tone-rule: var(--lavender-200);
+}
+
+.soft {
+  --tone-bg: var(--lavender-50);
+}
+
+.violet,
+.deep,
+.night,
+.ink {
+  --tone-fg: var(--white);
+  --tone-eyebrow: var(--lime);
+  --tone-lead: var(--lavender-300);
+  --tone-muted: var(--grey-300);
+  --tone-rule: rgba(255, 255, 255, 0.14);
+}
+
+.violet {
+  --tone-bg: var(--violet-500);
+}
+
+.deep {
+  --tone-bg: linear-gradient(180deg, var(--violet-700) 0%, var(--violet-900) 100%);
+}
+
+.night {
+  --tone-bg: var(--night);
+  --tone-lead: var(--grey-300);
+}
+
+.ink {
+  --tone-bg: var(--ink);
+  --tone-lead: var(--grey-300);
+}
+
+.lime {
+  --tone-bg: var(--lime);
+  --tone-fg: var(--ink);
+  --tone-eyebrow: var(--olive-700);
+  --tone-lead: var(--olive-800);
+  --tone-muted: var(--olive-800);
+  --tone-rule: var(--ink);
+}

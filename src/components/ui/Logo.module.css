@@ -1,0 +1,28 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--white);
+}
+
+.mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 35%;
+  background: var(--lime);
+  color: var(--ink);
+}
+
+.word {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.urdu {
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--grey-300);
+}

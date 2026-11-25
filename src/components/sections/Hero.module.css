@@ -1,0 +1,149 @@
+.hero {
+  background: linear-gradient(
+    180deg,
+    var(--violet-500) 0%,
+    var(--violet-700) 46%,
+    var(--violet-900) 100%
+  );
+  color: var(--white);
+  padding-top: var(--nav-offset);
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 64px;
+  align-items: center;
+  padding-top: 72px;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.title {
+  font-weight: 800;
+  font-size: var(--fs-hero);
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.lead {
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: var(--lavender-300);
+  max-width: 520px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.visual {
+  position: relative;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glow {
+  position: absolute;
+  width: 560px;
+  height: 560px;
+  max-width: 100%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 45%,
+    rgba(185, 166, 255, 0.55) 0%,
+    rgba(123, 92, 255, 0.2) 55%,
+    rgba(91, 61, 245, 0) 75%
+  );
+}
+
+.viewer {
+  position: absolute;
+  inset: 0;
+}
+
+.tag {
+  position: absolute;
+  pointer-events: none;
+}
+
+.topLeft {
+  left: 0;
+  top: 70px;
+}
+
+.topRight {
+  right: 24px;
+  top: 40px;
+}
+
+.bottomRight {
+  right: 0;
+  bottom: 92px;
+}
+
+.bottomLeft {
+  left: 40px;
+  bottom: 36px;
+}
+
+.meta {
+  margin-top: 56px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.metaInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px 16px;
+  flex-wrap: wrap;
+  padding-block: 22px;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--grey-300);
+}
+
+.disclaimer {
+  color: var(--lime);
+}
+
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    padding-top: 40px;
+  }
+
+  .visual {
+    min-height: 400px;
+  }
+
+  .topLeft {
+    top: 24px;
+  }
+
+  .topRight {
+    top: 0;
+    right: 0;
+  }
+
+  .bottomRight {
+    bottom: 56px;
+  }
+
+  .bottomLeft {
+    left: 0;
+    bottom: 8px;
+  }
+}

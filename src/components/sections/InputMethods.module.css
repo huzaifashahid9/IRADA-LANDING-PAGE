@@ -1,0 +1,40 @@
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.card {
+  gap: 16px;
+}
+
+.tag {
+  align-self: flex-start;
+}
+
+.notes {
+  margin-top: auto;
+  border-top: 1px solid var(--lavender-200);
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.good {
+  color: var(--good);
+}
+
+.watch {
+  color: var(--warn);
+}
+
+.always {
+  color: var(--lime);
+}
+
+.card:last-child .notes {
+  border-top-color: rgba(255, 255, 255, 0.14);
+}

@@ -1,0 +1,49 @@
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.member {
+  flex-direction: row;
+  align-items: center;
+  gap: 18px;
+  padding: 28px;
+}
+
+.avatar {
+  width: 76px;
+  height: 76px;
+  flex-shrink: 0;
+  border-radius: 26px;
+  font-weight: 800;
+  font-size: 1.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.violet {
+  background: var(--violet-500);
+  color: var(--lime);
+}
+
+.ink {
+  background: var(--ink);
+  color: var(--lime);
+}
+
+.lime {
+  background: var(--lime);
+  color: var(--ink);
+}
+
+.memberBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.role {
+  gap: 6px;
+}

@@ -1,0 +1,13 @@
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.tier {
+  gap: 12px;
+}
+
+.price {
+  font-weight: 800;
+  font-size: 1.0625rem;
+}

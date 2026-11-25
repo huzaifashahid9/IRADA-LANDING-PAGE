@@ -1,0 +1,35 @@
+.inner {
+  gap: 64px;
+}
+
+.conditions {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cards {
+  list-style: none;
+  padding: 0;
+}
+
+.statCard {
+  justify-content: space-between;
+  gap: 40px;
+  min-height: 300px;
+}
+
+.statBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.statValue {
+  font-weight: 800;
+  font-size: 2.5rem;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
