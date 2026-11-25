@@ -1,4 +1,6 @@
+import Image from 'next/image';
 import { Card, CardText, CardTitle, Eyebrow, Grid, Icon, Section, SectionHeading } from '@/components/ui';
+import { site } from '@/content/site';
 import { team } from '@/content/team';
 import { cx } from '@/lib/cx';
 import styles from './Team.module.css';
@@ -9,21 +11,70 @@ export default function Team() {
       <SectionHeading id="team-title" eyebrow={team.eyebrow} title={team.title} lead={team.lead} />
 
       <Grid cols={2} as="ul" className={styles.list}>
-        {team.members.map((member) => (
-          <Card as="li" key={member.name} tone="soft" padding="lg" className={styles.member}>
-            <div className={styles.memberHead}>
-              <span className={cx(styles.avatar, styles[member.tone])} aria-hidden="true">
-                {member.initials}
-              </span>
-              <div className={styles.memberName}>
-                <CardTitle size="md">{member.name}</CardTitle>
-                <Eyebrow>{member.role}</Eyebrow>
+        {team.members.map((member) => {
+          // GitHub and LinkedIn live with the contact details in site.js.
+          const links = site.contacts.find((person) => person.name === member.name) ?? {};
+          return (
+            <Card as="li" key={member.name} tone="soft" padding="lg" className={styles.member}>
+              <div className={styles.memberHead}>
+                <span className={cx(styles.avatar, styles[member.tone])}>
+                  {member.photo ? (
+                    <Image
+                      src={member.photo}
+                      alt={`Photo of ${member.name}`}
+                      width={192}
+                      height={192}
+                      sizes="96px"
+                      className={styles.photo}
+                    />
+                  ) : (
+                    <span aria-hidden="true">{member.initials}</span>
+                  )}
+                </span>
+                <div className={styles.memberName}>
+                  <CardTitle size="md">{member.name}</CardTitle>
+                  <Eyebrow>{member.role}</Eyebrow>
+                </div>
               </div>
-            </div>
-            <CardText>{member.text}</CardText>
-            <p className={styles.bio}>{member.bio}</p>
-          </Card>
-        ))}
+              <CardText>{member.text}</CardText>
+              <p className={styles.bio}>{member.bio}</p>
+              {(links.github || links.linkedin) && (
+                <div className={styles.socials}>
+                  {links.github && (
+                    <a
+                      href={links.github}
+                      className={styles.social}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Icon name="github" size={17} />
+                      GitHub
+                      <span className="visually-hidden">
+                        {' '}
+                        of {member.name} (opens in a new tab)
+                      </span>
+                    </a>
+                  )}
+                  {links.linkedin && (
+                    <a
+                      href={links.linkedin}
+                      className={styles.social}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Icon name="linkedin" size={17} />
+                      LinkedIn
+                      <span className="visually-hidden">
+                        {' '}
+                        of {member.name} (opens in a new tab)
+                      </span>
+                    </a>
+                  )}
+                </div>
+              )}
+            </Card>
+          );
+        })}
       </Grid>
 
       <div className={styles.split}>

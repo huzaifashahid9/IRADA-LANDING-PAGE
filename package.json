@@ -7,6 +7,12 @@
     "name": "Huzaifa Shahid",
     "url": "https://github.com/huzaifashahid9"
   },
+  "contributors": [
+    {
+      "name": "Muneeb Mustafa",
+      "url": "https://github.com/tf-muneeb"
+    }
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
