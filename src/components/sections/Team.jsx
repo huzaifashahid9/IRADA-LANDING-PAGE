@@ -19,7 +19,12 @@ export default function Team() {
     <Section id="team" tone="light" labelledBy="team-title">
       <SectionHeading id="team-title" eyebrow={team.eyebrow} title={team.title} lead={team.lead} />
 
-      <Grid cols={3} as="ul" className={styles.list}>
+      {/* Two or three columns, so a two-person team does not leave an empty slot. */}
+      <Grid
+        cols={team.members.length === 2 || team.members.length === 4 ? 2 : 3}
+        as="ul"
+        className={styles.list}
+      >
         {team.members.map((member) => (
           <Card as="li" key={member.name} tone="soft" padding="sm" className={styles.member}>
             <span className={cx(styles.avatar, styles[member.tone])} aria-hidden="true">

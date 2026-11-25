@@ -6,7 +6,7 @@ import styles from './Footer.module.css';
  * @param {{href: string, label: string}[]} props.links
  * @param {string} props.disclaimer
  * @param {string} props.team
- * @param {{name: string, url: string}} props.author
+ * @param {{name: string, url?: string}} [props.author]
  */
 export default function Footer({ links, disclaimer, team, author }) {
   const year = 2026;
@@ -15,7 +15,7 @@ export default function Footer({ links, disclaimer, team, author }) {
     <footer className={styles.footer}>
       <Container className={styles.inner}>
         <div className={styles.top}>
-          <Logo size={44} showUrdu />
+          <Logo variant="full" size={96} showUrdu />
           <nav aria-label="Footer">
             <ul className={styles.links}>
               {links.map((link) => (
@@ -33,18 +33,25 @@ export default function Footer({ links, disclaimer, team, author }) {
           <p className={styles.meta}>
             © {year} {team} · Prices are rough estimates in PKR
           </p>
-          <p className={styles.meta}>
-            Designed and built by{' '}
-            <a
-              href={author.url}
-              className={styles.author}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icon name="github" size={14} />
-              {author.name}
-            </a>
-          </p>
+          {author?.name && (
+            <p className={styles.meta}>
+              Designed and built by{' '}
+              {author.url ? (
+                <a
+                  href={author.url}
+                  className={styles.author}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon name="github" size={14} />
+                  {author.name}
+                  <span className="visually-hidden"> on GitHub (opens in a new tab)</span>
+                </a>
+              ) : (
+                author.name
+              )}
+            </p>
+          )}
         </div>
       </Container>
     </footer>

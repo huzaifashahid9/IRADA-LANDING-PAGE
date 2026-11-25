@@ -6,7 +6,7 @@
 export const headset = {
   eyebrow: '04 · The headset',
   title: 'Six parts. Nothing invasive.',
-  lead: 'Electrode positions follow the international 10-20 system. Drag the live 3D model to look around it.',
+  lead: 'Electrode positions follow the international 10-20 system. Turn the live 3D model to look around it.',
   parts: [
     {
       title: 'Motor sensors',

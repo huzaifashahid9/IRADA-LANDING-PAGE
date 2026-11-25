@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
+import { PLACEHOLDER_SPLIT as SPLIT } from '@/lib/placeholder';
 import Placeholder from './Placeholder';
 
-const SPLIT = /(\[[^\]]+\])/;
 const IS_PLACEHOLDER = /^\[[^\]]+\]$/;
 
 /**
@@ -11,13 +11,16 @@ const IS_PLACEHOLDER = /^\[[^\]]+\]$/;
 export default function RichText({ text, placeholderColor }) {
   if (typeof text !== 'string') return text ?? null;
 
-  return text.split(SPLIT).map((part, index) =>
-    IS_PLACEHOLDER.test(part) ? (
-      <Placeholder key={index} color={placeholderColor}>
-        {part}
-      </Placeholder>
-    ) : (
-      <Fragment key={index}>{part}</Fragment>
-    ),
-  );
+  return text
+    .split(SPLIT)
+    .filter(Boolean)
+    .map((part, index) =>
+      IS_PLACEHOLDER.test(part) ? (
+        <Placeholder key={index} color={placeholderColor}>
+          {part}
+        </Placeholder>
+      ) : (
+        <Fragment key={index}>{part}</Fragment>
+      ),
+    );
 }

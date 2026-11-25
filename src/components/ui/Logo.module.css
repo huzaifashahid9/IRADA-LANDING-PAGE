@@ -1,24 +1,19 @@
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
   color: var(--white);
 }
 
-.mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.image {
+  display: block;
   flex-shrink: 0;
-  border-radius: 35%;
-  background: var(--lime);
-  color: var(--ink);
-}
-
-.word {
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1;
+  max-width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-select: none;
+  /* Stop the iOS long-press image menu from popping up when the logo link is pressed. */
+  -webkit-touch-callout: none;
 }
 
 .urdu {

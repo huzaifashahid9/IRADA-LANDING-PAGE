@@ -38,6 +38,11 @@
   opacity: 1;
 }
 
+/* Until the model is on screen, taps and swipes go to the page, not to an invisible canvas. */
+.model:not(.modelVisible) {
+  pointer-events: none;
+}
+
 .model:focus-visible {
   box-shadow: var(--focus-ring);
   border-radius: var(--radius-lg);
@@ -55,6 +60,7 @@
   align-items: center;
   justify-content: center;
   transition: opacity 0.3s ease;
+  touch-action: manipulation;
 }
 
 .hotspot:not([data-visible]),
@@ -106,7 +112,12 @@
 }
 
 .hotspotActive .hotspotLabel,
-.hotspot:hover .hotspotLabel,
 .hotspot:focus-visible .hotspotLabel {
   opacity: 1;
+}
+
+@media (hover: hover) {
+  .hotspot:hover .hotspotLabel {
+    opacity: 1;
+  }
 }

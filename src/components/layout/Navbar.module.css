@@ -26,7 +26,9 @@
 .brand {
   display: flex;
   align-items: center;
-  padding-right: 10px;
+  flex-shrink: 0;
+  min-height: 48px;
+  padding: 0 14px 0 16px;
   text-decoration: none;
   border-radius: var(--radius-pill);
 }
@@ -54,13 +56,21 @@
     background-color 0.2s ease;
 }
 
-.link:hover {
+@media (hover: hover) {
+  .link:hover {
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.link:active {
   color: var(--white);
   background: rgba(255, 255, 255, 0.08);
 }
 
 .linkActive,
-.linkActive:hover {
+.linkActive:hover,
+.linkActive:active {
   color: var(--ink);
   background: var(--lime);
 }
@@ -69,10 +79,20 @@
   margin-left: 4px;
 }
 
+/* The menu's own copy of the call to action, shown only when the bar has no room for it. */
+.menuCta {
+  display: none;
+}
+
+.menuCtaButton {
+  width: 100%;
+}
+
 .menuButton {
   display: none;
   width: 48px;
   height: 48px;
+  flex-shrink: 0;
   border: 0;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
@@ -82,15 +102,15 @@
   cursor: pointer;
 }
 
-@media (max-width: 1100px) {
-  .wide {
-    display: none;
-  }
+.menuButton:active {
+  background: rgba(255, 255, 255, 0.2);
 }
 
-@media (max-width: 760px) {
+/* Phones and tablets (including iPad portrait): links move into a drop-down menu. */
+@media (max-width: 960px) {
   .bar {
     width: 100%;
+    max-width: 720px;
     justify-content: space-between;
   }
 
@@ -115,14 +135,16 @@
     border-radius: var(--radius-lg);
     background: var(--ink);
     box-shadow: var(--shadow-float);
+    /* Landscape phones are short: keep the whole menu reachable by scrolling inside it. */
+    max-height: calc(100vh - 110px);
+    max-height: calc(100dvh - 110px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
 
   .linksOpen {
     display: flex;
-  }
-
-  .links .wide {
-    display: block;
   }
 
   .link {
@@ -134,5 +156,10 @@
 @media (max-width: 380px) {
   .cta {
     display: none;
+  }
+
+  .menuCta {
+    display: block;
+    padding-top: 6px;
   }
 }

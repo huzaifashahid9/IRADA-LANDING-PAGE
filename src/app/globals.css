@@ -39,7 +39,7 @@
 
   /* Type */
   --font-sans: var(--font-jakarta), system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --fs-hero: clamp(3.5rem, 2rem + 6.4vw, 7rem);
+  --fs-hero: clamp(2.875rem, 1.6rem + 6.4vw, 7rem);
   --fs-h2: clamp(2.5rem, 1.7rem + 3.2vw, 4.25rem);
   --fs-h3: 1.625rem;
   --fs-lead: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);
@@ -81,6 +81,10 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--nav-offset);
   -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* The phone menu sits over the page; never let the page shift sideways on iOS or Android. */
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -108,6 +112,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  overflow-x: clip;
+  overflow-wrap: break-word;
 }
 
 h1,
@@ -132,9 +138,18 @@ a {
   color: inherit;
 }
 
+/* Remove the grey flash on tap (Android and iOS); every control has its own pressed and focus styles. */
+a,
+button,
+summary,
+[role='button'] {
+  -webkit-tap-highlight-color: transparent;
+}
+
 button {
   font: inherit;
   color: inherit;
+  touch-action: manipulation;
 }
 
 :focus-visible {

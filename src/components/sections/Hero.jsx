@@ -5,12 +5,27 @@ import { site } from '@/content/site';
 import { cx } from '@/lib/cx';
 import styles from './Hero.module.css';
 
+/** Marks the Urdu word in the eyebrow as Urdu, so screen readers pronounce it correctly. */
+function withUrdu(text) {
+  const [before, ...rest] = text.split(site.nameUrdu);
+  if (!rest.length) return text;
+  return (
+    <>
+      {before}
+      <span lang="ur" dir="rtl">
+        {site.nameUrdu}
+      </span>
+      {rest.join(site.nameUrdu)}
+    </>
+  );
+}
+
 export default function Hero() {
   return (
     <section id="top" className={styles.hero} aria-labelledby="hero-title">
       <Container className={styles.grid}>
         <div className={styles.copy}>
-          <Eyebrow color="var(--lime)">{hero.eyebrow}</Eyebrow>
+          <Eyebrow color="var(--lime)">{withUrdu(hero.eyebrow)}</Eyebrow>
           <h1 id="hero-title" className={styles.title}>
             {hero.title}
           </h1>
@@ -29,7 +44,7 @@ export default function Hero() {
           <div className={styles.glow} aria-hidden="true" />
           <HeadsetViewer
             poster={hero.image}
-            priority
+            preload
             cameraOrbit="25deg 75deg 105%"
             className={styles.viewer}
           />
@@ -43,9 +58,11 @@ export default function Hero() {
               {tag.label}
             </Pill>
           ))}
-          <Pill tone="outline" className={cx(styles.tag, styles.bottomLeft)}>
+          {/* Shown by CSS only once the 3D model has loaded (data-state="ready"). */}
+          <Pill tone="outline" className={cx(styles.tag, styles.bottomLeft, styles.dragHint)}>
             <Icon name="rotate" size={16} strokeWidth={2.2} />
-            Drag to rotate
+            <span className={styles.hintMouse}>Drag to rotate</span>
+            <span className={styles.hintTouch}>Swipe to rotate</span>
           </Pill>
         </div>
       </Container>

@@ -19,7 +19,7 @@ export const useCases = {
     {
       title: 'Smart-home control',
       text: 'Lights, fan, TV and door intercom through simple smart switches.',
-      status: 'Version 3',
+      status: 'Version 4',
       tone: 'soft',
     },
     {

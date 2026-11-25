@@ -10,6 +10,55 @@
   flex-wrap: wrap;
 }
 
+.swipeHint {
+  display: none;
+}
+
+/* Phones: one scrolling row instead of three phones stacked about 1,800px tall. */
+@media (max-width: 760px) {
+  .inner {
+    gap: 48px;
+  }
+
+  .phones {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 20px;
+    /* Bleed to the screen edges so the next phone peeks in from the side. */
+    margin-inline: calc(-1 * var(--gutter));
+    padding: 8px var(--gutter) 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .phones::-webkit-scrollbar {
+    display: none;
+  }
+
+  .phones > * {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+  }
+
+  .swipeHint {
+    display: block;
+    margin-top: -32px;
+    text-align: center;
+    font-size: var(--fs-small);
+    font-weight: 600;
+    color: var(--lavender-300);
+  }
+}
+
+.phones:focus-visible {
+  border-radius: var(--radius-lg);
+}
+
 .views {
   list-style: none;
   padding: 0;

@@ -11,13 +11,12 @@ export const team = {
       tone: 'violet',
     },
     {
-      name: 'Huzaifa [surname]',
-      initials: 'H',
+      name: 'Huzaifa Shahid',
+      initials: 'HS',
       role: 'App and agent development',
       note: '[role · photo]',
       tone: 'ink',
     },
-    { name: 'Anas [surname]', initials: 'A', role: '[role]', note: '[photo]', tone: 'lime' },
   ],
   openRoles: [
     { label: 'Recruiting', title: 'Signal processing and ML', text: 'MNE, scikit-learn, PyTorch' },

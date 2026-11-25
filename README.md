@@ -4,7 +4,7 @@ The landing page for **IRADA** (ارادہ, "intention"): a brain-signal headset
 
 > IRADA is an assistive prototype, not a medical device.
 
-Built by **[Anas](https://github.com/anashanif123)** for Team Hexabytes.
+Built by **[Huzaifa Shahid](https://github.com/huzaifashahid9)** for Team Hexabytes.
 
 ## Tech stack
 
@@ -35,7 +35,7 @@ npm run dev        # http://localhost:3000
 | `npm run format`       | Format every file with Prettier  |
 | `npm run format:check` | Check formatting without writing |
 
-Copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_SITE_URL` to the deployed address, so the SEO tags, `sitemap.xml` and `robots.txt` point at the right domain.
+The live site is **[irada.live](https://irada.live)**. The SEO tags, `sitemap.xml` and `robots.txt` point there by default. To use another address, copy `.env.example` to `.env.local` and change `NEXT_PUBLIC_SITE_URL`.
 
 ## Project structure
 
@@ -61,6 +61,7 @@ Sections only arrange components; the words live in `src/content/`. To change co
 
 - **Placeholders.** Any text in `[square brackets]` renders as a dashed placeholder box, for facts that still need a verified source (market size, patient numbers, headset weight, contact details, surnames). Replace the bracketed text in `src/content/` when the real value is known.
 - **Site settings** such as the contact details, the footer credit and the demo link are in `src/content/site.js`. Set `demoUrl` to show the "Try the simulated app" button.
+- **The logo** source is `public/logos/irada-logo-transparent.svg`. The navigation uses the cropped `irada-wordmark.svg`, the footer and 404 page use `irada-logo.svg`, and `irada-mark.svg` is the symbol alone. The favicon is `src/app/icon.svg`; the iOS home-screen icon is `src/app/apple-icon.png`, and the Android icons are in `public/icons/`. All are cut from the source file, so redo them if the logo changes.
 - **The 3D model** is `public/models/headset.glb`. Its explode animation names and the hotspot positions for each part are in `src/content/site.js` and `src/content/headset.js`. Use the [model-viewer editor](https://modelviewer.dev/editor/) to find new hotspot positions if the model changes.
 
 ## Accessibility

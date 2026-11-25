@@ -18,7 +18,8 @@ export default function AppDemo() {
         layout="center"
       />
 
-      <div className={styles.phones}>
+      {/* On phones this row scrolls sideways and snaps to each screen. */}
+      <div className={styles.phones} role="region" aria-label="Demo screens" tabIndex={0}>
         <PhoneFrame caption={home} screen="violet">
           <HomeScreen />
         </PhoneFrame>
@@ -29,6 +30,9 @@ export default function AppDemo() {
           <ConfirmScreen />
         </PhoneFrame>
       </div>
+      <p className={styles.swipeHint} aria-hidden="true">
+        Swipe to see all three screens
+      </p>
 
       <Grid cols={3} as="ul" className={styles.views}>
         {appDemo.views.map((view) => (

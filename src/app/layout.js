@@ -28,6 +28,9 @@ export const metadata = {
     'Pakistan',
   ],
   alternates: { canonical: '/' },
+  // Stop iOS Safari from turning prices and ranges such as "PKR 400,000–900,000" into
+  // phone links. Real contact details are explicit mailto:/tel: links instead.
+  formatDetection: { telephone: false, email: false, address: false },
   openGraph: {
     type: 'website',
     url: '/',
@@ -47,6 +50,8 @@ export const metadata = {
 export const viewport = {
   themeColor: '#5b3df5',
   colorScheme: 'light',
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }) {

@@ -10,6 +10,9 @@
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
   transition:
     background-color 0.2s ease,
     transform 0.2s ease;
@@ -36,17 +39,9 @@
   color: var(--ink);
 }
 
-.lime:hover {
-  background: var(--lime-hover);
-}
-
 .black {
   background: var(--ink);
   color: var(--white);
-}
-
-.black:hover {
-  background: var(--violet-800);
 }
 
 .ghost {
@@ -54,7 +49,30 @@
   color: var(--white);
 }
 
-.ghost:hover {
+/* Hover colours only on devices that can hover, so they do not stick after a tap on phones. */
+@media (hover: hover) {
+  .lime:hover {
+    background: var(--lime-hover);
+  }
+
+  .black:hover {
+    background: var(--violet-800);
+  }
+
+  .ghost:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.lime:active {
+  background: var(--lime-hover);
+}
+
+.black:active {
+  background: var(--violet-800);
+}
+
+.ghost:active {
   background: rgba(255, 255, 255, 0.2);
 }
 
@@ -63,5 +81,16 @@
     height: 56px;
     padding: 0 22px;
     font-size: 1rem;
+  }
+}
+
+/* Very narrow phones (320–360px): let long labels wrap instead of overflowing the screen. */
+@media (max-width: 380px) {
+  .md {
+    height: auto;
+    min-height: 56px;
+    padding-block: 12px;
+    white-space: normal;
+    text-align: center;
   }
 }

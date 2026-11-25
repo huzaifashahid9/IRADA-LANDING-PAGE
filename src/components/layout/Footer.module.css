@@ -2,6 +2,8 @@
   background: var(--ink);
   color: var(--white);
   padding: 56px 0 40px;
+  /* Clear the home indicator on iPhones and gesture bar on Android. */
+  padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px));
 }
 
 .inner {
@@ -23,21 +25,27 @@
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 6px 22px;
+  gap: 0 22px;
   flex-wrap: wrap;
 }
 
 .link {
   display: inline-block;
-  padding: 8px 0;
+  padding: 12px 0;
   color: var(--grey-300);
   text-decoration: none;
   font-weight: 700;
   font-size: var(--fs-small);
 }
 
-.link:hover {
-  color: var(--white);
+@media (hover: hover) {
+  .link:hover {
+    color: var(--white);
+  }
+
+  .author:hover {
+    color: var(--lime);
+  }
 }
 
 .bottom {
@@ -64,11 +72,8 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  padding-block: 10px;
   color: var(--white);
   font-weight: 700;
   text-decoration: none;
-}
-
-.author:hover {
-  color: var(--lime);
 }

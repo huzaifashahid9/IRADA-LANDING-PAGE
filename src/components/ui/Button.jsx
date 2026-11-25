@@ -30,10 +30,18 @@ export default function Button({
   );
 
   if (href) {
-    const isExternal = /^https?:\/\//.test(href);
-    if (isExternal) {
+    if (/^https?:\/\//i.test(href)) {
       return (
         <a href={href} className={classes} target="_blank" rel="noopener noreferrer" {...rest}>
+          {content}
+          <span className="visually-hidden"> (opens in a new tab)</span>
+        </a>
+      );
+    }
+    // Same-page anchors and mailto:/tel: links are plain links, not app routes.
+    if (/^(#|mailto:|tel:)/i.test(href)) {
+      return (
+        <a href={href} className={classes} {...rest}>
           {content}
         </a>
       );
