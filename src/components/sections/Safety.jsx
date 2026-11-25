@@ -16,7 +16,7 @@ export default function Safety() {
 
         <ol className={styles.rules}>
           {safety.rules.map((rule, index) => (
-            <li key={rule.title} className={styles.rule}>
+            <li key={rule.title} className={styles.rule} data-reveal="">
               <span className={styles.number} aria-hidden="true">
                 {String(index + 1).padStart(2, '0')}
               </span>

@@ -63,3 +63,11 @@
   background: rgba(14, 11, 26, 0.35);
   color: var(--white);
 }
+
+/* Long labels wrap on narrow phones instead of pushing the page sideways. */
+@media (max-width: 480px) {
+  .pill {
+    white-space: normal;
+    max-width: 100%;
+  }
+}

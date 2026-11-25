@@ -1,6 +1,6 @@
 /** Wheelchair control is left out on purpose: the build document marks it out of scope. */
 export const useCases = {
-  eyebrow: '09 · Use cases',
+  eyebrow: '11 · Use cases',
   title: 'One pipeline. Several futures.',
   lead: 'Signal, decode, confirm, act. We build the first one properly and treat the rest as options.',
   items: [

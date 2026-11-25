@@ -42,6 +42,7 @@ export default function SectionHeading({
 
   return (
     <header
+      data-reveal=""
       className={cx(
         styles.heading,
         styles[layout],

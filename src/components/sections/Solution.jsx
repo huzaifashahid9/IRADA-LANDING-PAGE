@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Card, CardText, CardTitle, Grid, Section, SectionHeading } from '@/components/ui';
+import { Card, CardText, CardTitle, Grid, Pill, Section, SectionHeading } from '@/components/ui';
 import { solution } from '@/content/solution';
 import { cx } from '@/lib/cx';
 import styles from './Solution.module.css';
@@ -42,7 +42,18 @@ export default function Solution() {
         ))}
       </Grid>
 
-      <figure className={styles.quote}>
+      <div className={styles.newBlock} data-reveal="">
+        <p className={styles.newTitle}>{solution.newPoints.title}</p>
+        <ul className={styles.newList}>
+          {solution.newPoints.items.map((item) => (
+            <li key={item}>
+              <Pill tone="lime">{item}</Pill>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <figure className={styles.quote} data-reveal="">
         <blockquote className={styles.quoteText}>
           {quote.lead} <span className={styles.highlight}>{quote.highlight}</span> {quote.rest}
         </blockquote>

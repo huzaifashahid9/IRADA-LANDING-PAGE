@@ -13,7 +13,7 @@ import styles from './Stat.module.css';
  */
 export default function Stat({ value, unit, label, size = 'md', className }) {
   return (
-    <div className={cx(styles.stat, styles[size], className)}>
+    <div className={cx(styles.stat, styles[size], className)} data-reveal="">
       <p className={styles.value}>
         <RichText text={value} />
         {unit && <span className={styles.unit}>{unit}</span>}

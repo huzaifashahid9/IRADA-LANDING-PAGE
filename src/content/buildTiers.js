@@ -1,5 +1,5 @@
 export const buildTiers = {
-  eyebrow: '11 · The build path',
+  eyebrow: '12 · The build path',
   title: 'Software first. Then cheap hardware. Then the real thing.',
   lead: 'Four hardware tiers, each proving one more link in the chain before we spend on the next. Prices are rough PKR estimates.',
   tiers: [

@@ -1,5 +1,5 @@
 export const faq = {
-  eyebrow: '16 · Questions',
+  eyebrow: '17 · Questions',
   title: 'The questions judges ask us.',
   items: [
     {
@@ -26,6 +26,11 @@ export const faq = {
       question: 'Where does the brain data go?',
       answer:
         'Raw EEG stays on the phone. It is encrypted, never sold, and the user can export or delete it.',
+    },
+    {
+      question: 'How is it different from Neuralink?',
+      answer:
+        'Implants need brain surgery and are still trial-only. IRADA is a non-invasive headset and a phone, it asks before every action, it works offline in Urdu and English, and it keeps eye tracking and switches as fallbacks.',
     },
     {
       question: 'Has it been tested on patients?',

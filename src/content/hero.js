@@ -3,7 +3,7 @@ export const hero = {
   title: 'Turn intention into action.',
   lead: 'A brain-signal headset, a phone app and a careful AI agent that let people living with paralysis call family, send a message or ask for help, using commands they have practised.',
   primaryCta: { href: '#headset', label: 'Explore in 3D' },
-  secondaryCta: { href: '#how', label: 'How it works' },
+  secondaryCta: { href: '#app', label: 'Try the app' },
   image: {
     src: '/images/hero.png',
     alt: 'The IRADA headset: a white band with an ear-to-ear arc of motor sensors, ear clips and a cancel button',
@@ -14,6 +14,7 @@ export const hero = {
     { label: 'Non-invasive', tone: 'lime', rotate: -8, position: 'topLeft' },
     { label: 'C3 · Cz · C4', tone: 'ink', rotate: 4, position: 'topRight' },
     { label: 'You confirm every action', tone: 'white', rotate: 5, position: 'bottomRight' },
+    { label: 'One button cancels', tone: 'soft', rotate: -3, position: 'midLeft' },
   ],
 };
 

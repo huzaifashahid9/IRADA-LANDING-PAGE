@@ -69,3 +69,35 @@
   font-weight: 600;
   color: var(--grey-300);
 }
+
+.newBlock {
+  display: flex;
+  align-items: center;
+  gap: 16px 24px;
+  flex-wrap: wrap;
+}
+
+.newTitle {
+  font-weight: 800;
+  font-size: 1.125rem;
+  letter-spacing: -0.01em;
+}
+
+.newList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* The pillar renders lift a little on hover. */
+.image {
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (hover: hover) {
+  .pillar:hover .image {
+    transform: translateY(-8px) rotate(-3deg) scale(1.04);
+  }
+}

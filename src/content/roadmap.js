@@ -1,5 +1,5 @@
 export const roadmap = {
-  eyebrow: '12 · Roadmap',
+  eyebrow: '13 · Roadmap',
   title: 'Eighteen months to a supervised pilot.',
   lead: 'If time and money are tight, Phases 0 and 1 come first. They cost almost nothing and prove the core.',
   phases: [

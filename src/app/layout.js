@@ -1,4 +1,7 @@
 import { Plus_Jakarta_Sans } from 'next/font/google';
+import Preloader from '@/components/motion/Preloader';
+import RevealObserver from '@/components/motion/RevealObserver';
+import ScrollProgress from '@/components/motion/ScrollProgress';
 import { site } from '@/content/site';
 import './globals.css';
 
@@ -56,8 +59,13 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={jakarta.variable}>
-      <body>{children}</body>
+    <html lang="en" className={jakarta.variable} suppressHydrationWarning>
+      <body>
+        <Preloader />
+        <ScrollProgress />
+        {children}
+        <RevealObserver />
+      </body>
     </html>
   );
 }

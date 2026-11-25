@@ -6,7 +6,7 @@
 export const headset = {
   eyebrow: '04 · The headset',
   title: 'Six parts. Nothing invasive.',
-  lead: 'Electrode positions follow the international 10-20 system. Turn the live 3D model to look around it.',
+  lead: 'Electrode positions follow the international 10-20 system. Drag the live 3D model, tap a number, or explode it to see every part.',
   parts: [
     {
       title: 'Motor sensors',
@@ -61,7 +61,7 @@ export const headset = {
     { label: 'Sampling', value: '~250 per second' },
     { label: 'Link', value: 'Bluetooth LE' },
     { label: 'Battery', value: '3.7 V LiPo, 1,000–2,000 mAh' },
-    { label: 'Weight', value: '[grams]' },
+    { label: 'Cancel', value: 'Physical button + light' },
   ],
   poster: {
     src: '/images/viewer-poster.png',

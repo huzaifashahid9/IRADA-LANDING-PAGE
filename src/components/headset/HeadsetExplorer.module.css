@@ -54,11 +54,33 @@
 
 .partTitle {
   color: var(--white);
+  flex-grow: 1;
+}
+
+.partArrow {
+  opacity: 0;
+  transform: translateX(-6px);
+  color: var(--lime);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.partActive .partArrow {
+  opacity: 1;
+  transform: none;
+}
+
+@media (hover: hover) {
+  .part:hover .partArrow {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .stage {
   position: relative;
-  min-height: 560px;
+  min-height: 600px;
   border-radius: 48px;
   overflow: hidden;
   background: linear-gradient(
@@ -75,7 +97,144 @@
 .viewer {
   position: absolute;
   inset: 0;
-  padding: 24px;
+  padding: 64px 24px 112px;
+}
+
+.stageGlow {
+  position: absolute;
+  width: 80%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 65%);
+  animation: glow-breathe 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes glow-breathe {
+  0%,
+  100% {
+    transform: scale(0.92);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+.tour {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--ink);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(14, 11, 26, 0.3);
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.tour:active {
+  transform: scale(0.96);
+}
+
+.tourOn {
+  background: var(--lime);
+  color: var(--ink);
+}
+
+.caption {
+  position: absolute;
+  left: 50%;
+  bottom: 88px;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 6px;
+  border-radius: var(--radius-pill);
+  background: rgba(14, 11, 26, 0.55);
+  backdrop-filter: blur(8px);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.captionNumber {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--lime);
+  color: var(--ink);
+  font-weight: 800;
+  font-size: 0.8125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tools {
+  display: flex;
+  gap: 4px;
+  background: var(--white);
+  border-radius: var(--radius-pill);
+  padding: 5px;
+}
+
+.tool {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease;
+}
+
+@media (hover: hover) {
+  .tool:hover:not(:disabled) {
+    background: var(--lavender-100);
+  }
+}
+
+.tool:active:not(:disabled) {
+  transform: scale(0.9);
+}
+
+.toolOn {
+  background: var(--ink);
+  color: var(--lime);
+}
+
+@media (hover: hover) {
+  .toolOn:hover:not(:disabled) {
+    background: var(--ink);
+  }
+}
+
+.tool:disabled {
+  cursor: progress;
+  opacity: 0.45;
 }
 
 .dragTag {
@@ -105,10 +264,12 @@
   left: 24px;
   right: 24px;
   bottom: 24px;
+  z-index: 3;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .segmented {
@@ -166,29 +327,51 @@
   }
 
   .stage {
-    min-height: 420px;
+    min-height: 520px;
     border-radius: 36px;
   }
 
+  .viewer {
+    padding: 60px 8px 128px;
+  }
+
   .dragTag {
-    left: 16px;
+    left: 14px;
     top: 16px;
   }
 
-  .controls {
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
+  .tour {
+    right: 14px;
+    top: 14px;
   }
-}
 
-/* Very narrow phones: the 360° label gives way so the view toggle never overflows. */
-@media (max-width: 360px) {
   .controls {
+    left: 12px;
+    right: 12px;
+    bottom: 14px;
     justify-content: center;
   }
 
-  .controls > :first-child {
-    display: none;
+  /* On phones the lit-up number already names the part, so the caption is only read
+     out to screen readers and never covers the model. */
+  .caption {
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* Very narrow phones: slightly smaller tool buttons so the toolbar never overflows. */
+@media (max-width: 360px) {
+  .tool {
+    width: 36px;
+    height: 36px;
+  }
+
+  .segment {
+    padding: 8px 12px;
   }
 }

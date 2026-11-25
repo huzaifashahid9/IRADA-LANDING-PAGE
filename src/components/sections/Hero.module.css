@@ -97,6 +97,82 @@
   bottom: 36px;
 }
 
+.midLeft {
+  left: -6px;
+  top: 52%;
+}
+
+/* Floating tags drift gently; `translate` keeps each tag's own tilt. */
+.tag:not(.dragHint) {
+  animation: tag-float 6s ease-in-out calc(var(--i, 0) * -1.4s) infinite;
+}
+
+@keyframes tag-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -10px;
+  }
+}
+
+.glow {
+  animation: glow-breathe 6s ease-in-out infinite;
+}
+
+@keyframes glow-breathe {
+  0%,
+  100% {
+    transform: scale(0.94);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+/*
+ * Entrance, played when the loading screen lifts. Before that (with JavaScript on)
+ * the pieces wait hidden behind it; without JavaScript they are simply shown.
+ */
+:global(.motion-ready:not(.is-loaded)) .copy > *,
+:global(.motion-ready:not(.is-loaded)) .visual {
+  opacity: 0;
+}
+
+:global(.is-loaded) .copy > * {
+  animation: hero-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+:global(.is-loaded) .copy > :nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+:global(.is-loaded) .copy > :nth-child(3) {
+  animation-delay: 0.18s;
+}
+
+:global(.is-loaded) .copy > :nth-child(4) {
+  animation-delay: 0.28s;
+}
+
+:global(.is-loaded) .visual {
+  animation: hero-visual-in 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.15s backwards;
+}
+
+@keyframes hero-visual-in {
+  from {
+    opacity: 0;
+    transform: scale(0.88) translate3d(0, 30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .dragHint {
   opacity: 0;
   visibility: hidden;
@@ -171,5 +247,9 @@
   .bottomLeft {
     left: 0;
     bottom: 8px;
+  }
+
+  .midLeft {
+    display: none;
   }
 }
