@@ -6,6 +6,7 @@ export const team = {
     {
       name: 'Muneeb Mustafa',
       initials: 'MM',
+      photo: '/images/team/muneeb-mustafa.jpg',
       role: 'Team lead · Idea and prototype',
       text: 'Shaped the IRADA idea and designed the prototype: the headset, the five-step flow and the safety rules.',
       bio: 'FAST University Karachi · Software Engineering. Application developer and researcher.',
@@ -14,6 +15,7 @@ export const team = {
     {
       name: 'Huzaifa Shahid',
       initials: 'HS',
+      photo: '/images/team/huzaifa-shahid.jpg',
       role: 'Build and engineering',
       text: 'Built the IRADA app, the interactive 3D headset and the live site irada.live.',
       bio: 'FAST University Karachi · Software Engineering. Full-stack developer.',

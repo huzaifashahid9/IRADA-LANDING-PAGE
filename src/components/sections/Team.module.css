@@ -21,10 +21,12 @@
 }
 
 .avatar {
-  width: 76px;
-  height: 76px;
+  position: relative;
+  width: 96px;
+  height: 96px;
   flex-shrink: 0;
-  border-radius: 26px;
+  overflow: hidden;
+  border-radius: 30px;
   font-weight: 800;
   font-size: 1.625rem;
   display: flex;
@@ -39,6 +41,23 @@
   }
 }
 
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* A coloured frame around each photo, matching the deck. */
+.avatar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 4px currentColor;
+  pointer-events: none;
+}
+
 .violet {
   background: var(--violet-500);
   color: var(--lime);
@@ -46,7 +65,43 @@
 
 .ink {
   background: var(--ink);
+  color: var(--violet-500);
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.social {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--white);
+  border: 1px solid var(--lavender-200);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: var(--fs-small);
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.social:hover {
+  background: var(--ink);
   color: var(--lime);
+  transform: translateY(-2px);
+}
+
+.social:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
 }
 
 .bio {

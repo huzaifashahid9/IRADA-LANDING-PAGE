@@ -41,20 +41,32 @@ export const site = {
       role: 'Team lead',
       email: 'muneebmustafa321@gmail.com',
       phone: '+92 345 2750935',
+      github: 'https://github.com/tf-muneeb',
+      linkedin: 'https://www.linkedin.com/in/tf-muneeb',
     },
     {
       name: 'Huzaifa Shahid',
       role: 'Build and engineering',
       email: 'huzaifashahid288@gmail.com',
       phone: '+92 310 2239483',
+      github: 'https://github.com/huzaifashahid9',
+      linkedin: 'https://www.linkedin.com/in/huzaifashahid9/',
     },
   ],
   city: 'Karachi, Pakistan',
-  /** Credit shown in the footer. */
-  author: {
-    name: 'Huzaifa Shahid',
-    url: 'https://github.com/huzaifashahid9',
-  },
+  /** Credit shown in the footer ("Designed and built by …") and in the page metadata. */
+  authors: [
+    {
+      name: 'Muneeb Mustafa',
+      url: 'https://github.com/tf-muneeb',
+      linkedin: 'https://www.linkedin.com/in/tf-muneeb',
+    },
+    {
+      name: 'Huzaifa Shahid',
+      url: 'https://github.com/huzaifashahid9',
+      linkedin: 'https://www.linkedin.com/in/huzaifashahid9/',
+    },
+  ],
 };
 
 /** Anchor links shown in the floating navigation (and in its menu on phones and tablets). */

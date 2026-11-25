@@ -4,7 +4,7 @@ The landing page for **IRADA** (ارادہ, "intention"): a brain-signal headset
 
 > IRADA is an assistive prototype, not a medical device.
 
-Built by **[Huzaifa Shahid](https://github.com/huzaifashahid9)** for Team Hexabytes.
+Designed and built by **[Muneeb Mustafa](https://github.com/tf-muneeb)** and **[Huzaifa Shahid](https://github.com/huzaifashahid9)** for Team Hexabytes.
 
 ## Tech stack
 
@@ -60,7 +60,7 @@ Sections only arrange components; the words live in `src/content/`. To change co
 ## Editing content
 
 - **Placeholders.** Any text in `[square brackets]` renders as a dashed placeholder box, for facts that still need a verified source (market size, patient numbers, headset weight, contact details, surnames). Replace the bracketed text in `src/content/` when the real value is known.
-- **Site settings** such as the contact details, the footer credit and the demo link are in `src/content/site.js`. Set `demoUrl` to show the "Try the simulated app" button.
+- **Site settings** such as the contact details, the footer credit and the demo link are in `src/content/site.js`.
 - **The logo** source is `public/logos/irada-logo-transparent.svg`. The navigation uses the cropped `irada-wordmark.svg`, the footer and 404 page use `irada-logo.svg`, and `irada-mark.svg` is the symbol alone. The favicon is `src/app/icon.svg`; the iOS home-screen icon is `src/app/apple-icon.png`, and the Android icons are in `public/icons/`. All are cut from the source file, so redo them if the logo changes.
 - **The 3D model** is `public/models/headset.glb`. Its explode animation names and the hotspot positions for each part are in `src/content/site.js` and `src/content/headset.js`. Use the [model-viewer editor](https://modelviewer.dev/editor/) to find new hotspot positions if the model changes.
 
