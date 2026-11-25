@@ -44,25 +44,47 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s ease;
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
 }
 
-.item[open] .toggle {
+.item[open]:not([data-closing]) .toggle {
   background: var(--ink);
   color: var(--lime);
 }
 
+/* Plus and minus sit on top of each other and cross-fade with a quarter turn. */
+.toggle {
+  display: grid;
+  place-items: center;
+}
+
+.toggle > * {
+  grid-area: 1 / 1;
+  transition:
+    opacity 0.35s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 .minus,
-.item[open] .plus {
-  display: none;
+.item[open]:not([data-closing]) .plus {
+  opacity: 0;
+  transform: rotate(-90deg);
 }
 
-.item[open] .minus {
-  display: block;
+.item[open]:not([data-closing]) .minus {
+  opacity: 1;
+  transform: none;
 }
 
+.panel {
+  overflow: hidden;
+}
+
+/* Padding rather than margin, so the gap is part of the animated height. */
 .answer {
-  margin-top: 14px;
+  padding-top: 14px;
   color: var(--grey-700);
 }
 

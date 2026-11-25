@@ -34,6 +34,7 @@
 }
 
 .links {
+  position: relative;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -42,7 +43,24 @@
   gap: 2px;
 }
 
+/* The lime highlight behind the active link; Navbar.jsx sets its size and position. */
+.indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--radius-pill);
+  background: var(--lime);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease;
+}
+
 .link {
+  position: relative;
   display: block;
   color: var(--grey-300);
   text-decoration: none;
@@ -52,7 +70,7 @@
   border-radius: var(--radius-pill);
   white-space: nowrap;
   transition:
-    color 0.2s ease,
+    color 0.35s ease,
     background-color 0.2s ease;
 }
 
@@ -72,7 +90,7 @@
 .linkActive:hover,
 .linkActive:active {
   color: var(--ink);
-  background: var(--lime);
+  background: transparent;
 }
 
 .cta {
@@ -102,6 +120,28 @@
   cursor: pointer;
 }
 
+.menuIcons {
+  display: grid;
+}
+
+.menuIcons > * {
+  grid-area: 1 / 1;
+  transition:
+    opacity 0.25s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.iconClose,
+.menuButton[aria-expanded='true'] .iconMenu {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.6);
+}
+
+.menuButton[aria-expanded='true'] .iconClose {
+  opacity: 1;
+  transform: none;
+}
+
 .menuButton:active {
   background: rgba(255, 255, 255, 0.2);
 }
@@ -122,8 +162,18 @@
     display: inline-flex;
   }
 
+  /* Closed with visibility (not display) so it can animate, and stays out of the tab order. */
   .links {
-    display: none;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    transform: translate3d(0, -14px, 0) scale(0.96);
+    transform-origin: top center;
+    pointer-events: none;
+    transition:
+      opacity 0.25s ease,
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 0s linear 0.3s;
     position: absolute;
     top: calc(100% + 10px);
     left: 0;
@@ -144,12 +194,65 @@
   }
 
   .linksOpen {
-    display: flex;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    transition:
+      opacity 0.3s ease,
+      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0s;
+  }
+
+  /* The links follow the panel in, one after another. */
+  .links > li:not(.indicator) {
+    opacity: 0;
+    translate: 0 -10px;
+    transition:
+      opacity 0.2s ease,
+      translate 0.25s ease;
+  }
+
+  .linksOpen > li:not(.indicator) {
+    opacity: 1;
+    translate: 0 0;
+    transition:
+      opacity 0.35s ease,
+      translate 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .linksOpen > li:nth-child(2) {
+    transition-delay: 0.04s;
+  }
+  .linksOpen > li:nth-child(3) {
+    transition-delay: 0.08s;
+  }
+  .linksOpen > li:nth-child(4) {
+    transition-delay: 0.12s;
+  }
+  .linksOpen > li:nth-child(5) {
+    transition-delay: 0.16s;
+  }
+  .linksOpen > li:nth-child(6) {
+    transition-delay: 0.2s;
+  }
+  .linksOpen > li:nth-child(7) {
+    transition-delay: 0.24s;
+  }
+  .linksOpen > li:nth-child(8) {
+    transition-delay: 0.28s;
   }
 
   .link {
     padding: 14px 18px;
     font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .links,
+  .links > li {
+    transition-delay: 0s !important;
   }
 }
 

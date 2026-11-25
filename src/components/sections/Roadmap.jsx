@@ -1,6 +1,6 @@
 import { Card, CardText, Eyebrow, Grid, Section, SectionHeading } from '@/components/ui';
 import { roadmap } from '@/content/roadmap';
-import { cx } from '@/lib/cx';
+import RoadmapTimeline from './RoadmapTimeline';
 import styles from './Roadmap.module.css';
 
 export default function Roadmap() {
@@ -13,24 +13,7 @@ export default function Roadmap() {
         lead={roadmap.lead}
       />
 
-      <div className={styles.timeline}>
-        <div className={styles.track} aria-hidden="true" />
-        <ol className={styles.phases}>
-          {roadmap.phases.map((phase) => (
-            <li key={phase.when} className={styles.phase} data-reveal="">
-              <span
-                className={cx(styles.dot, phase.status && styles[phase.status])}
-                aria-hidden="true"
-              />
-              <p className={cx(styles.when, phase.status === 'first' && styles.whenFirst)}>
-                {phase.when}
-              </p>
-              <p className={styles.phaseTitle}>{phase.title}</p>
-              <p className={styles.phaseText}>{phase.text}</p>
-            </li>
-          ))}
-        </ol>
-      </div>
+      <RoadmapTimeline phases={roadmap.phases} />
 
       <Grid cols={4} gap="md" as="ul" className={styles.versions}>
         {roadmap.versions.map((version) => (

@@ -18,11 +18,7 @@ export default function HowItWorks() {
 
       <Grid cols={5} gap="sm" as="ol" className={styles.steps}>
         {howItWorks.steps.map((step, index) => (
-          <li
-            key={step.title}
-            className={cx(styles.step, step.highlight && styles.stepHighlight)}
-            data-reveal=""
-          >
+          <li key={step.title} className={styles.step} data-reveal="">
             <div className={styles.media}>
               <Image src={step.image} alt="" width={360} height={360} className={styles.image} />
             </div>

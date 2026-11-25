@@ -1,8 +1,9 @@
 'use client';
 
-import { useCallback, useEffect, useReducer } from 'react';
+import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import { Icon, Pill } from '@/components/ui';
 import { cx } from '@/lib/cx';
+import { gsap, ScrollTrigger } from '@/lib/gsap';
 import styles from './LiveDemo.module.css';
 
 /** How long the simulated decoder "listens" before it names a command. */
@@ -21,7 +22,8 @@ const SCREEN_META = {
   confirm: { state: 'Awaiting confirmation', step: 3, tone: 'lime' },
   executing: { state: 'Executing', step: 4, tone: 'ink' },
   done: { state: 'Done', step: 4, tone: 'ink' },
-  cancelled: { state: 'Cancelled', step: 3, tone: 'white' },
+  // A cancelled run stays on the step where it was stopped (see `cancelledAt`).
+  cancelled: { state: 'Cancelled', step: null, tone: 'white' },
 };
 
 function now() {
@@ -41,6 +43,7 @@ function initialState() {
     actionId: null,
     seconds: 0,
     yeses: 0,
+    cancelledAt: 0,
     reason: '',
     weak: false,
     log: [],
@@ -69,6 +72,7 @@ function reducer(state, event) {
         return {
           ...state,
           screen: 'cancelled',
+          cancelledAt: SCREEN_META.confirm.step,
           seconds: 0,
           reason: 'Time ran out, so nothing was sent. Silence is never treated as a yes.',
           log: addLog(state.log, { title: event.title, outcome: 'Timed out' }),
@@ -96,6 +100,7 @@ function reducer(state, event) {
       return {
         ...state,
         screen: 'cancelled',
+        cancelledAt: SCREEN_META[state.screen].step,
         reason: event.reason,
         log: addLog(state.log, { title: event.title, outcome: event.outcome }),
       };
@@ -130,6 +135,41 @@ export default function LiveDemo({ content }) {
   const { actions, confirmSeconds, steps } = content;
   const action = actions.find((item) => item.id === state.actionId);
   const meta = SCREEN_META[state.screen];
+  const demoRef = useRef(null);
+  const stepsRef = useRef(null);
+  const [scrollStep, setScrollStep] = useState(0);
+  const [inUse, setInUse] = useState(false);
+  // Until someone uses the phone, scrolling walks through the steps. From the first tap
+  // the steps follow the phone, including back to the first step on its menu.
+  const touring = state.screen === 'home' && !inUse;
+  const phoneStep = meta.step ?? state.cancelledAt;
+  const activeStep = touring ? scrollStep : phoneStep;
+
+  // Once the whole demo has scrolled out of view, the next visit starts with the tour again.
+  useEffect(() => {
+    const demo = demoRef.current;
+    if (!demo || typeof IntersectionObserver === 'undefined') return undefined;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) setInUse(false);
+    });
+    observer.observe(demo);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const list = stepsRef.current;
+    if (!list || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    const context = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: list,
+        start: 'top 70%',
+        end: 'bottom 40%',
+        onUpdate: ({ progress }) =>
+          setScrollStep(Math.min(steps.length - 1, Math.floor(progress * steps.length))),
+      });
+    });
+    return () => context.revert();
+  }, [steps.length]);
 
   // Listening → intent detected.
   useEffect(() => {
@@ -176,14 +216,14 @@ export default function LiveDemo({ content }) {
   const ringProgress = state.screen === 'confirm' ? state.seconds / confirmSeconds : 0;
 
   return (
-    <div className={styles.demo}>
+    <div ref={demoRef} className={styles.demo}>
       <div className={styles.side}>
-        <ol className={styles.steps} aria-label="Where you are in the flow">
+        <ol ref={stepsRef} className={styles.steps} aria-label="Where you are in the flow">
           {steps.map((step, index) => {
             const status =
-              index < meta.step || (index === meta.step && state.screen === 'done')
+              index < activeStep || (index === activeStep && state.screen === 'done')
                 ? 'done'
-                : index === meta.step
+                : index === activeStep
                   ? 'current'
                   : 'next';
             return (
@@ -257,7 +297,10 @@ export default function LiveDemo({ content }) {
                         key={item.id}
                         type="button"
                         className={cx(styles.tile, styles[`tile-${item.id}`])}
-                        onClick={() => dispatch({ type: 'choose', actionId: item.id })}
+                        onClick={() => {
+                          setInUse(true);
+                          dispatch({ type: 'choose', actionId: item.id });
+                        }}
                       >
                         <span className={styles.tileIcon}>
                           <Icon name={item.icon} size={22} strokeWidth={2.2} />

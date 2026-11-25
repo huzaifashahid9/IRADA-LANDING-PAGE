@@ -47,22 +47,6 @@ function supportsWebGL() {
   }
 }
 
-/** Resolves once the loading screen has lifted (it adds `is-loaded` to <html>). */
-function whenPageShown(callback) {
-  const root = document.documentElement;
-  if (root.classList.contains('is-loaded')) {
-    callback();
-    return () => {};
-  }
-  const observer = new MutationObserver(() => {
-    if (!root.classList.contains('is-loaded')) return;
-    observer.disconnect();
-    callback();
-  });
-  observer.observe(root, { attributes: true, attributeFilter: ['class'] });
-  return () => observer.disconnect();
-}
-
 /**
  * The interactive 3D headset, rendered with Google's <model-viewer> web component.
  * A static render is shown until the model has loaded, and stays if WebGL is missing,
@@ -79,7 +63,7 @@ function whenPageShown(callback) {
  * @param {{src: string, alt: string, width: number, height: number}} props.poster
  * @param {string} [props.cameraOrbit] Resting camera angle, e.g. "-158deg 68deg 125%".
  * @param {string} [props.introOrbit] Where the camera starts; it sweeps to `cameraOrbit`
- *   once the model is ready and the loading screen has lifted.
+ *   once the model is ready.
  * @param {{title: string, hotspot: object}[]} [props.parts] Parts to mark with numbered hotspots.
  * @param {number} [props.selected] Index of the highlighted part.
  * @param {number} [props.focusKey] Change it to turn the camera to the selected part
@@ -190,7 +174,7 @@ export default function HeadsetViewer({
     };
   }, [libraryReady]);
 
-  // Intro: once the model is ready and the page is on screen, sweep the camera from
+  // Intro: once the model is ready, sweep the camera from
   // `introOrbit` to its resting angle. model-viewer eases between the two.
   useEffect(() => {
     const viewer = viewerRef.current;
@@ -200,16 +184,10 @@ export default function HeadsetViewer({
       viewer.jumpCameraToGoal?.();
       return undefined;
     }
-    let timer;
-    const stop = whenPageShown(() => {
-      timer = window.setTimeout(() => {
-        viewer.cameraOrbit = cameraOrbit;
-      }, 250);
-    });
-    return () => {
-      stop();
-      window.clearTimeout(timer);
-    };
+    const timer = window.setTimeout(() => {
+      viewer.cameraOrbit = cameraOrbit;
+    }, 250);
+    return () => window.clearTimeout(timer);
     // Only on first load; later camera moves come from the user or the part picker.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modelLoaded]);

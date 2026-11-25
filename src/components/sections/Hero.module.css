@@ -133,32 +133,24 @@
   }
 }
 
-/*
- * Entrance, played when the loading screen lifts. Before that (with JavaScript on)
- * the pieces wait hidden behind it; without JavaScript they are simply shown.
- */
-:global(.motion-ready:not(.is-loaded)) .copy > *,
-:global(.motion-ready:not(.is-loaded)) .visual {
-  opacity: 0;
-}
-
-:global(.is-loaded) .copy > * {
+/* Entrance, played on first paint. */
+.copy > * {
   animation: hero-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 
-:global(.is-loaded) .copy > :nth-child(2) {
+.copy > :nth-child(2) {
   animation-delay: 0.08s;
 }
 
-:global(.is-loaded) .copy > :nth-child(3) {
+.copy > :nth-child(3) {
   animation-delay: 0.18s;
 }
 
-:global(.is-loaded) .copy > :nth-child(4) {
+.copy > :nth-child(4) {
   animation-delay: 0.28s;
 }
 
-:global(.is-loaded) .visual {
+.visual {
   animation: hero-visual-in 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.15s backwards;
 }
 

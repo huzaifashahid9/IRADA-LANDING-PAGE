@@ -1,0 +1,43 @@
+/* Each number gets its own card, two to a row, with the number beside its caption.
+   The doubled class outranks Stat's own styles whatever order the CSS loads in. */
+.stat.stat {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+  min-height: 180px;
+  padding: 32px 36px;
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: 0 18px 40px rgba(58, 71, 0, 0.12);
+}
+
+.stat.stat > p:first-child {
+  font-size: clamp(3rem, 1.6rem + 3vw, 4.5rem);
+  color: var(--violet-700);
+}
+
+.stat.stat > p:last-child {
+  font-size: var(--fs-body);
+  color: var(--grey-700);
+  padding-left: 24px;
+  border-left: 2px solid var(--lavender-200);
+}
+
+/* On phones the caption drops under the number. */
+@media (max-width: 760px) {
+  .stat.stat {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    min-height: 0;
+    padding: 26px 24px;
+  }
+
+  .stat.stat > p:last-child {
+    padding: 14px 0 0;
+    border-left: 0;
+    border-top: 2px solid var(--lavender-200);
+  }
+}

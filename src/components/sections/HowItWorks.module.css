@@ -14,14 +14,6 @@
   --card-text: var(--lavender-300);
 }
 
-.stepHighlight {
-  background: var(--lime);
-  color: var(--ink);
-  border-color: transparent;
-  box-shadow: 0 24px 60px rgba(14, 11, 26, 0.35);
-  --card-text: var(--olive-800);
-}
-
 .media {
   aspect-ratio: 1 / 1;
   border-radius: var(--radius-sm);
@@ -29,10 +21,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.stepHighlight .media {
-  background: rgba(14, 11, 26, 0.06);
 }
 
 .image {
@@ -45,10 +33,6 @@
   font-size: var(--fs-small);
   font-weight: 700;
   color: var(--lime);
-}
-
-.stepHighlight .number {
-  color: var(--olive-700);
 }
 
 .pad {
@@ -144,11 +128,39 @@
 .step {
   transition:
     transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.35s ease;
+    box-shadow 0.35s ease,
+    background-color 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease;
 }
 
+.media,
+.number {
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
+}
+
+.step p {
+  transition: color 0.35s ease;
+}
+
+/* With a mouse, the card under the pointer takes the lime highlight; none is lit otherwise. */
 @media (hover: hover) {
   .step:hover {
     transform: translateY(-6px);
+    background: var(--lime);
+    color: var(--ink);
+    border-color: transparent;
+    box-shadow: 0 24px 60px rgba(14, 11, 26, 0.35);
+    --card-text: var(--olive-800);
+  }
+
+  .step:hover .media {
+    background: rgba(14, 11, 26, 0.06);
+  }
+
+  .step:hover .number {
+    color: var(--olive-700);
   }
 }

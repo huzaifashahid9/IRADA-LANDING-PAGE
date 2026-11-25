@@ -1,8 +1,9 @@
 import { Plus_Jakarta_Sans } from 'next/font/google';
-import Preloader from '@/components/motion/Preloader';
 import RevealObserver from '@/components/motion/RevealObserver';
 import ScrollProgress from '@/components/motion/ScrollProgress';
+import SmoothScroll from '@/components/motion/SmoothScroll';
 import { site } from '@/content/site';
+import 'lenis/dist/lenis.css';
 import './globals.css';
 
 const jakarta = Plus_Jakarta_Sans({
@@ -57,11 +58,33 @@ export const viewport = {
   initialScale: 1,
 };
 
+/**
+ * A reload starts at the top. The browser decides whether to restore the scroll position
+ * from what the page set before it was left, hence `pagehide`; any #section is also
+ * dropped on reload so the browser does not jump there. Inline, so it runs before the
+ * browser scrolls. Shared #section links keep working.
+ */
+const RELOAD_TO_TOP = `(function () {
+  addEventListener('pagehide', function () {
+    history.scrollRestoration = 'manual';
+  });
+  addEventListener('pageshow', function () {
+    setTimeout(function () {
+      history.scrollRestoration = 'auto';
+    }, 0);
+  });
+  var entry = performance.getEntriesByType('navigation')[0];
+  if (entry && entry.type === 'reload' && location.hash) {
+    history.replaceState(history.state, '', location.pathname + location.search);
+  }
+})();`;
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={jakarta.variable} suppressHydrationWarning>
       <body>
-        <Preloader />
+        <script dangerouslySetInnerHTML={{ __html: RELOAD_TO_TOP }} />
+        <SmoothScroll />
         <ScrollProgress />
         {children}
         <RevealObserver />

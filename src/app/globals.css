@@ -87,6 +87,21 @@ html {
   overflow-x: clip;
 }
 
+/* Lenis animates the scroll itself; native smooth scrolling on top of it would fight it. */
+html.lenis {
+  scroll-behavior: auto;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #d4ff3a;
+    border-radius: 5px;
+  }
+
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -195,7 +210,7 @@ button {
   }
 }
 
-/* Hero entrance, played when the loading screen lifts (see Preloader). */
+/* Hero entrance, played on first paint. */
 @keyframes hero-in {
   from {
     opacity: 0;
