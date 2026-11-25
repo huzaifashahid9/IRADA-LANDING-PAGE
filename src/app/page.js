@@ -3,7 +3,6 @@ import Navbar from '@/components/layout/Navbar';
 import SkipLink from '@/components/layout/SkipLink';
 import {
   AppDemo,
-  Ask,
   BuildTiers,
   Contact,
   FactsStrip,
@@ -14,12 +13,14 @@ import {
   InputMethods,
   Market,
   Measures,
+  Positioning,
   Privacy,
   Problem,
   Roadmap,
   Safety,
   Solution,
   Team,
+  Traction,
   UseCases,
 } from '@/components/sections';
 import { footerLinks, navLinks, site } from '@/content/site';
@@ -28,7 +29,7 @@ export default function HomePage() {
   return (
     <>
       <SkipLink href="#main" />
-      <Navbar links={navLinks} cta={{ href: '#ask', label: 'Back the pilot' }} />
+      <Navbar links={navLinks} cta={{ href: '#app', label: 'Try the app' }} />
       <main id="main" tabIndex={-1}>
         <Hero />
         <FactsStrip />
@@ -40,13 +41,14 @@ export default function HomePage() {
         <AppDemo />
         <Safety />
         <Privacy />
-        <UseCases />
+        <Positioning />
         <Market />
+        <UseCases />
         <BuildTiers />
         <Roadmap />
         <Measures />
+        <Traction />
         <Team />
-        <Ask />
         <Faq />
         <Contact />
       </main>

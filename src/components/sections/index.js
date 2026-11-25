@@ -1,5 +1,4 @@
 export { default as AppDemo } from './AppDemo';
-export { default as Ask } from './Ask';
 export { default as BuildTiers } from './BuildTiers';
 export { default as Contact } from './Contact';
 export { default as FactsStrip } from './FactsStrip';
@@ -10,10 +9,12 @@ export { default as HowItWorks } from './HowItWorks';
 export { default as InputMethods } from './InputMethods';
 export { default as Market } from './Market';
 export { default as Measures } from './Measures';
+export { default as Positioning } from './Positioning';
 export { default as Privacy } from './Privacy';
 export { default as Problem } from './Problem';
 export { default as Roadmap } from './Roadmap';
 export { default as Safety } from './Safety';
 export { default as Solution } from './Solution';
 export { default as Team } from './Team';
+export { default as Traction } from './Traction';
 export { default as UseCases } from './UseCases';

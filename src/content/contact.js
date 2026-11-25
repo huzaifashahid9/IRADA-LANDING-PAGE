@@ -1,7 +1,13 @@
 export const contact = {
-  eyebrow: 'Back the pilot',
+  eyebrow: 'Get in touch',
   title: 'Help us turn intention into action.',
-  primaryCta: { href: '#contact-details', label: 'Contact the team' },
+  lead: 'Rehab centre, therapist, engineer or judge: we would love to hear from you.',
+  primaryCta: { label: 'Email the team' },
   secondaryCta: { href: '#headset', label: 'See the headset in 3D' },
-  tag: 'Built in Pakistan',
+  qr: {
+    src: '/images/qr-irada-live.svg',
+    alt: 'QR code that opens irada.live',
+    caption: 'Scan to open irada.live on your phone',
+  },
+  tag: 'Built in Karachi',
 };

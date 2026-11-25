@@ -2,3 +2,112 @@
   list-style: none;
   padding: 0;
 }
+
+.stat {
+  min-height: 260px;
+}
+
+.value {
+  margin-top: auto;
+  font-weight: 800;
+  font-size: clamp(2.25rem, 1.7rem + 1.8vw, 3.25rem);
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  font-variant-numeric: tabular-nums;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.blockTitle {
+  font-weight: 800;
+  font-size: 1.375rem;
+  letter-spacing: -0.02em;
+}
+
+.steps {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.step {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 18px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  --card-text: var(--lavender-300);
+}
+
+.stepNumber {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--lime);
+  color: var(--ink);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.model {
+  gap: 20px;
+}
+
+.points {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.points li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.check {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--lime);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.source {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--lavender-300);
+}
+
+@media (max-width: 900px) {
+  .split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .stat {
+    min-height: 0;
+  }
+}

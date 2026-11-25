@@ -21,6 +21,16 @@ export const solution = {
       tone: 'ink',
     },
   ],
+  newPoints: {
+    title: 'What makes it new',
+    items: [
+      'No surgery',
+      'Confirm before every action',
+      'Works offline, no account',
+      'Urdu and English',
+      'Built for Pakistani families and rehab centres',
+    ],
+  },
   quote: {
     lead: 'IRADA does not read thoughts.',
     highlight: 'It recognises a small set of commands the user has practised,',

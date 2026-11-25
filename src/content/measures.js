@@ -1,5 +1,5 @@
 export const measures = {
-  eyebrow: "13 · How we'll know",
+  eyebrow: "14 · How we'll know",
   title: 'Numbers we hold ourselves to.',
   lead: 'Accuracy is measured per user and per command, with a confusion matrix, never as one headline number.',
   stats: [

@@ -10,7 +10,12 @@ export default function Faq() {
         <SectionHeading id="faq-title" eyebrow={faq.eyebrow} title={faq.title} layout="stack" />
         <div className={styles.list}>
           {faq.items.map((item, index) => (
-            <details key={item.question} className={styles.item} open={index === 0}>
+            <details
+              key={item.question}
+              className={styles.item}
+              open={index === 0}
+              data-reveal=""
+            >
               <summary className={styles.summary}>
                 <span>{item.question}</span>
                 <span className={styles.toggle} aria-hidden="true">

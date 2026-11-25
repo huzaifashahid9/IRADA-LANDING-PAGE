@@ -122,3 +122,33 @@
     padding: 0;
   }
 }
+
+/* The step renders bob gently, each a beat after the last, and lift on hover. */
+.image {
+  animation: float-y 5s ease-in-out infinite;
+}
+
+.step:nth-child(2) .image {
+  animation-delay: -1s;
+}
+.step:nth-child(3) .image {
+  animation-delay: -2s;
+}
+.step:nth-child(4) .image {
+  animation-delay: -3s;
+}
+.step:nth-child(5) .image {
+  animation-delay: -4s;
+}
+
+.step {
+  transition:
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.35s ease;
+}
+
+@media (hover: hover) {
+  .step:hover {
+    transform: translateY(-6px);
+  }
+}

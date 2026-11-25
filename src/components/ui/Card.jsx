@@ -9,12 +9,14 @@ import styles from './Card.module.css';
  * @param {'sm'|'md'|'lg'|'none'} [props.padding]
  * @param {'md'|'lg'|'xl'} [props.radius]
  * @param {keyof JSX.IntrinsicElements} [props.as]
+ * @param {boolean} [props.reveal] Fade the card in as it scrolls into view (default true).
  */
 export default function Card({
   tone = 'white',
   padding = 'md',
   radius = 'lg',
   as: Tag = 'div',
+  reveal = true,
   className,
   children,
   ...rest
@@ -28,6 +30,7 @@ export default function Card({
         styles[`radius-${radius}`],
         className,
       )}
+      data-reveal={reveal ? '' : undefined}
       {...rest}
     >
       {children}

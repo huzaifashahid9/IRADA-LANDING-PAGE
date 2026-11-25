@@ -17,7 +17,7 @@ export default function Roadmap() {
         <div className={styles.track} aria-hidden="true" />
         <ol className={styles.phases}>
           {roadmap.phases.map((phase) => (
-            <li key={phase.when} className={styles.phase}>
+            <li key={phase.when} className={styles.phase} data-reveal="">
               <span
                 className={cx(styles.dot, phase.status && styles[phase.status])}
                 aria-hidden="true"

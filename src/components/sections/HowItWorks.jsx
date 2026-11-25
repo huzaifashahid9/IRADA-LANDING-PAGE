@@ -18,7 +18,11 @@ export default function HowItWorks() {
 
       <Grid cols={5} gap="sm" as="ol" className={styles.steps}>
         {howItWorks.steps.map((step, index) => (
-          <li key={step.title} className={cx(styles.step, step.highlight && styles.stepHighlight)}>
+          <li
+            key={step.title}
+            className={cx(styles.step, step.highlight && styles.stepHighlight)}
+            data-reveal=""
+          >
             <div className={styles.media}>
               <Image src={step.image} alt="" width={360} height={360} className={styles.image} />
             </div>
@@ -31,7 +35,7 @@ export default function HowItWorks() {
         ))}
       </Grid>
 
-      <div className={styles.machine}>
+      <div className={styles.machine} data-reveal="">
         <Eyebrow color="var(--lavender-300)">{stateMachine.caption}</Eyebrow>
         <ol className={styles.flow} aria-label="Interaction states">
           {stateMachine.flow.map((state, index) => (

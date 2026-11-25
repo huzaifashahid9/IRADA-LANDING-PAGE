@@ -26,21 +26,30 @@ export const site = {
     'IRADA is a brain-signal headset, a phone app and a careful AI agent that let people living with paralysis call family, send a message or ask for help, using commands they have practised.',
   url: resolveSiteUrl(),
   team: 'Team Hexabytes',
-  versionLine: 'Team Hexabytes · Version 1 · November 2026',
+  versionLine: 'Team Hexabytes · Top 30 at INVENT 2026 · Healthtech',
   disclaimer: 'Assistive prototype, not a medical device',
-  /** Link to the simulated phone app. Leave null to hide the "Try the simulated app" button. */
-  demoUrl: null,
   /** The 3D model shown in the hero and the headset section. */
   model: {
     src: '/models/headset.glb',
     explodeAnimation: 'Explode',
     assembleAnimation: 'Assemble',
   },
-  contact: {
-    email: '[team email]',
-    phone: '[number]',
-    city: '[city], Pakistan',
-  },
+  /** The people to contact. Emails and phones become tappable mailto: and tel: links. */
+  contacts: [
+    {
+      name: 'Muneeb Mustafa',
+      role: 'Team lead',
+      email: 'muneebmustafa321@gmail.com',
+      phone: '+92 345 2750935',
+    },
+    {
+      name: 'Huzaifa Shahid',
+      role: 'Build and engineering',
+      email: 'huzaifashahid288@gmail.com',
+      phone: '+92 310 2239483',
+    },
+  ],
+  city: 'Karachi, Pakistan',
   /** Credit shown in the footer. */
   author: {
     name: 'Huzaifa Shahid',
@@ -54,7 +63,7 @@ export const navLinks = [
   { href: '#headset', label: 'Headset' },
   { href: '#app', label: 'App' },
   { href: '#safety', label: 'Safety' },
-  { href: '#roadmap', label: 'Roadmap' },
+  { href: '#market', label: 'Market' },
   { href: '#team', label: 'Team' },
 ];
 
@@ -65,4 +74,5 @@ export const footerLinks = [
   { href: '#roadmap', label: 'Roadmap' },
   { href: '#team', label: 'Team' },
   { href: '#faq', label: 'FAQ' },
+  { href: '#contact', label: 'Contact' },
 ];

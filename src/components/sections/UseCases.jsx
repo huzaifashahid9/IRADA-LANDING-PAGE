@@ -13,7 +13,7 @@ export default function UseCases() {
       />
       <ol className={styles.list}>
         {useCases.items.map((item, index) => (
-          <li key={item.title} className={styles.item}>
+          <li key={item.title} className={styles.item} data-reveal="">
             <span className={styles.number} aria-hidden="true">
               {String(index + 1).padStart(2, '0')}
             </span>

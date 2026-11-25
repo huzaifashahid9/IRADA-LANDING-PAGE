@@ -1,3 +1,4 @@
+import CountUp from '@/components/motion/CountUp';
 import {
   Card,
   CardText,
@@ -6,11 +7,11 @@ import {
   Grid,
   IconBadge,
   Pill,
-  RichText,
   Section,
   SectionHeading,
 } from '@/components/ui';
 import { problem } from '@/content/problem';
+import { cx } from '@/lib/cx';
 import styles from './Problem.module.css';
 
 export default function Problem() {
@@ -32,18 +33,47 @@ export default function Problem() {
         </ul>
       </SectionHeading>
 
-      <Grid cols={4} as="ul" className={styles.cards}>
-        <Card as="li" tone="violet" className={styles.statCard}>
-          <Eyebrow color="var(--lime)">{problem.stat.eyebrow}</Eyebrow>
-          <div className={styles.statBody}>
-            <p className={styles.statValue}>
-              <RichText text={problem.stat.value} />
-            </p>
-            <CardText size="small" strong>
-              {problem.stat.text}
-            </CardText>
-          </div>
-        </Card>
+      <div className={styles.statsBlock}>
+        <Grid cols={4} gap="md" as="ul" className={styles.stats}>
+          {problem.stats.map((stat, index) => (
+            <Card
+              as="li"
+              key={stat.text}
+              tone={index < 2 ? 'violet' : 'ink'}
+              padding="md"
+              className={cx(styles.statCard)}
+            >
+              <Eyebrow color="var(--lime)">{stat.where}</Eyebrow>
+              <p className={styles.statValue}>
+                <CountUp
+                  value={stat.count}
+                  decimals={stat.decimals}
+                  prefix={stat.prefix}
+                  suffix={stat.suffix}
+                />
+              </p>
+              <CardText size="small" strong>
+                {stat.text}
+              </CardText>
+              <p className={styles.statSource}>{stat.source}</p>
+            </Card>
+          ))}
+        </Grid>
+        <p className={styles.sources}>
+          Sources:{' '}
+          {problem.sources.map((source, index) => (
+            <span key={source.href}>
+              {index > 0 && ' · '}
+              <a href={source.href} target="_blank" rel="noopener noreferrer">
+                {source.label}
+                <span className="visually-hidden"> (opens in a new tab)</span>
+              </a>
+            </span>
+          ))}
+        </p>
+      </div>
+
+      <Grid cols={3} as="ul" className={styles.cards}>
         {problem.audiences.map((audience) => (
           <Card as="li" key={audience.title}>
             <IconBadge name={audience.icon} />

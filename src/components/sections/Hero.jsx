@@ -46,14 +46,16 @@ export default function Hero() {
             poster={hero.image}
             preload
             cameraOrbit="25deg 75deg 105%"
+            introOrbit="-200deg 60deg 170%"
             className={styles.viewer}
           />
-          {hero.tags.map((tag) => (
+          {hero.tags.map((tag, index) => (
             <Pill
               key={tag.label}
               tone={tag.tone}
               rotate={tag.rotate}
               className={cx(styles.tag, styles[tag.position])}
+              style={{ '--i': index }}
             >
               {tag.label}
             </Pill>
