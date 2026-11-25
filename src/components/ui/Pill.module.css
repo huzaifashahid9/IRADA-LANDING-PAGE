@@ -1,0 +1,65 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.md {
+  padding: 8px 16px;
+  font-size: 0.875rem;
+}
+
+.sm {
+  padding: 6px 12px;
+  font-size: 0.75rem;
+}
+
+.xs {
+  padding: 5px 10px;
+  font-size: 0.6875rem;
+}
+
+.lime {
+  background: var(--lime);
+  color: var(--ink);
+}
+
+.white {
+  background: var(--white);
+  color: var(--ink);
+}
+
+.ink {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--white);
+}
+
+.outline {
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.soft {
+  background: var(--lavender-100);
+  color: var(--violet-500);
+}
+
+.violet {
+  background: var(--violet-500);
+  color: var(--white);
+}
+
+.dim {
+  background: rgba(14, 11, 26, 0.35);
+  color: var(--white);
+}

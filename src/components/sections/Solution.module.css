@@ -1,0 +1,71 @@
+.inner {
+  gap: 64px;
+}
+
+.pillars {
+  list-style: none;
+  padding: 0;
+}
+
+.pillar {
+  overflow: hidden;
+  gap: 0;
+}
+
+.media {
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.violet {
+  background: linear-gradient(180deg, var(--violet-300) 0%, var(--violet-600) 100%);
+}
+
+.lime {
+  background: var(--lime);
+}
+
+.ink {
+  background: var(--ink);
+}
+
+.image {
+  height: 210px;
+  width: auto;
+}
+
+.body {
+  padding: 28px 30px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quote {
+  background: var(--ink);
+  color: var(--white);
+  border-radius: var(--radius-xl);
+  padding: clamp(32px, 5vw, 64px);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.quoteText {
+  font-weight: 800;
+  font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.highlight {
+  color: var(--lime);
+}
+
+.caption {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--grey-300);
+}

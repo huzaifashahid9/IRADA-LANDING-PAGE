@@ -1,0 +1,25 @@
+.inner {
+  gap: 64px;
+}
+
+.phones {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.views {
+  list-style: none;
+  padding: 0;
+}
+
+.view {
+  gap: 10px;
+}
+
+.cta {
+  display: flex;
+  justify-content: center;
+}

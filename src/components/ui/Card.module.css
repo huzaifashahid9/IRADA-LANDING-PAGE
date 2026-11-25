@@ -1,0 +1,99 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  --card-text: var(--grey-700);
+  --card-muted: var(--grey-600);
+  --card-accent: var(--violet-400);
+}
+
+.pad-none {
+  padding: 0;
+}
+
+.pad-sm {
+  padding: 24px;
+}
+
+.pad-md {
+  padding: 30px;
+}
+
+.pad-lg {
+  padding: 36px;
+}
+
+.radius-md {
+  border-radius: var(--radius-md);
+}
+
+.radius-lg {
+  border-radius: var(--radius-lg);
+}
+
+.radius-xl {
+  border-radius: 36px;
+}
+
+.white {
+  background: var(--white);
+  color: var(--ink);
+}
+
+.soft {
+  background: var(--lavender-50);
+  color: var(--ink);
+}
+
+.lavender {
+  background: var(--lavender-100);
+  color: var(--ink);
+}
+
+.violet {
+  background: var(--violet-500);
+  color: var(--white);
+  --card-text: var(--lavender-300);
+  --card-muted: var(--lavender-300);
+  --card-accent: var(--lime);
+}
+
+.ink {
+  background: var(--ink);
+  color: var(--white);
+  --card-text: var(--grey-300);
+  --card-muted: var(--grey-300);
+  --card-accent: var(--lime);
+}
+
+.raised {
+  background: var(--ink-raised);
+  color: var(--white);
+  --card-text: var(--grey-300);
+  --card-muted: var(--grey-300);
+  --card-accent: var(--lime);
+}
+
+.lime {
+  background: var(--lime);
+  color: var(--ink);
+  --card-text: var(--olive-800);
+  --card-muted: var(--olive-800);
+  --card-accent: var(--olive-700);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--white);
+  --card-text: var(--tone-lead, var(--lavender-300));
+  --card-muted: var(--tone-muted, var(--grey-300));
+  --card-accent: var(--lime);
+}
+
+.dashed {
+  background: transparent;
+  border: 2px dashed var(--lavender-300);
+  color: var(--ink);
+}

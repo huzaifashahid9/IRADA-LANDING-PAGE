@@ -1,0 +1,156 @@
+/*
+ * Global styles: design tokens, a small reset and base typography.
+ * Component styles live next to each component as CSS Modules.
+ */
+
+:root {
+  /* Brand */
+  --violet-300: #9277ff;
+  --violet-400: #6a47fa;
+  --violet-500: #5b3df5;
+  --violet-600: #5530e8;
+  --violet-700: #3a1fb0;
+  --violet-800: #241c3d;
+  --violet-900: #1a0c45;
+  --night: #120830;
+  --ink: #0e0b1a;
+  --ink-raised: #1e1833;
+  --lime: #d4ff3a;
+  --lime-hover: #c6f21f;
+  --white: #ffffff;
+
+  /* Neutrals and tints */
+  --lavender-50: #f4f1fc;
+  --lavender-100: #f1eefa;
+  --lavender-200: #e4e0f2;
+  --lavender-300: #d9d1ff;
+  --grey-300: #b7b0cf;
+  --grey-600: #625d78;
+  --grey-700: #4a4560;
+
+  /* Status */
+  --olive-700: #3a4700;
+  --olive-800: #2e3800;
+  --good: #3a7a00;
+  --warn: #8a5a00;
+  --danger: #ff5c6c;
+  --danger-soft: #ff8a95;
+  --signal-good: #7cc400;
+
+  /* Type */
+  --font-sans: var(--font-jakarta), system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --fs-hero: clamp(3.5rem, 2rem + 6.4vw, 7rem);
+  --fs-h2: clamp(2.5rem, 1.7rem + 3.2vw, 4.25rem);
+  --fs-h3: 1.625rem;
+  --fs-lead: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-eyebrow: 0.8125rem;
+
+  /* Layout */
+  --container: 1240px;
+  --gutter: 40px;
+  --section-space: 128px;
+  --radius-sm: 22px;
+  --radius-md: 28px;
+  --radius-lg: 32px;
+  --radius-xl: 40px;
+  --radius-pill: 999px;
+  --nav-offset: 104px;
+
+  --shadow-float: 0 18px 40px rgba(8, 4, 24, 0.45);
+  --shadow-phone: 0 40px 80px rgba(8, 4, 24, 0.5);
+  --focus-ring: 0 0 0 3px var(--ink), 0 0 0 6px var(--lime);
+}
+
+@media (max-width: 760px) {
+  :root {
+    --gutter: 16px;
+    --section-space: 80px;
+    --fs-h3: 1.5rem;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-offset);
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+ol,
+ul {
+  margin: 0;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 12px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

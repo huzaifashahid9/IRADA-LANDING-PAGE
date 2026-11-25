@@ -1,0 +1,49 @@
+.title {
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.title-lg {
+  font-size: var(--fs-h3);
+}
+
+.title-md {
+  font-size: 1.3125rem;
+}
+
+.title-sm {
+  font-size: 1.125rem;
+  letter-spacing: -0.01em;
+}
+
+.body {
+  font-size: var(--fs-body);
+  line-height: 1.6;
+}
+
+.small {
+  font-size: var(--fs-small);
+  line-height: 1.5;
+}
+
+.strong {
+  font-weight: 650;
+}
+
+.color-text {
+  color: var(--card-text, var(--tone-lead));
+}
+
+.color-muted {
+  color: var(--card-muted, var(--tone-muted));
+}
+
+.color-accent {
+  color: var(--card-accent, var(--tone-eyebrow));
+}
+
+.color-inherit {
+  color: inherit;
+}

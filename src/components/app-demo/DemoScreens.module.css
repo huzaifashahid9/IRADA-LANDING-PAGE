@@ -1,0 +1,242 @@
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-weight: 800;
+  font-size: 0.9375rem;
+}
+
+.signalDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--signal-good);
+}
+
+.question {
+  margin-top: 6px;
+  font-weight: 800;
+  font-size: 1.625rem;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.mode {
+  align-self: flex-start;
+}
+
+.limeText {
+  color: var(--lime);
+}
+
+.menu {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  gap: 10px;
+}
+
+.tile {
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-weight: 800;
+  font-size: 0.9375rem;
+  line-height: 1.1;
+}
+
+.tileSelected {
+  background: var(--lime);
+  color: var(--ink);
+  box-shadow: 0 0 0 4px rgba(212, 255, 58, 0.35);
+}
+
+.tileWhite {
+  background: var(--white);
+  color: var(--ink);
+}
+
+.tileAlert {
+  grid-column: span 2;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding-block: 12px;
+  background: var(--ink);
+  color: var(--white);
+}
+
+.alertIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: var(--danger);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quick {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.quick span {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  padding: 12px 0;
+  text-align: center;
+  font-weight: 800;
+  font-size: 0.8125rem;
+}
+
+.intent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.intentIcon {
+  width: 96px;
+  height: 96px;
+  border-radius: 32px;
+  background: var(--violet-500);
+  color: var(--lime);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intentTitle {
+  font-weight: 800;
+  font-size: 1.625rem;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.confidence {
+  width: 100%;
+  background: var(--lavender-100);
+  border-radius: 18px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.confidenceRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+}
+
+.confidenceLabel {
+  font-weight: 700;
+  color: var(--grey-600);
+}
+
+.confidenceValue {
+  font-weight: 800;
+}
+
+.bar {
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--lavender-200);
+}
+
+.barFill {
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--violet-500);
+}
+
+.hint {
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--grey-600);
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.choices span {
+  border-radius: var(--radius-pill);
+  padding: 15px 0;
+  text-align: center;
+  font-weight: 800;
+  font-size: 0.875rem;
+}
+
+.choiceSoft {
+  background: var(--lavender-100);
+}
+
+.choiceFaint {
+  background: rgba(14, 11, 26, 0.1);
+}
+
+.choiceDark {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.confirm {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.confirmTitle {
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ring {
+  width: 68px;
+  height: 68px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 6px solid rgba(14, 11, 26, 0.15);
+  border-top-color: var(--ink);
+  border-right-color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.375rem;
+}
+
+.timerText {
+  font-weight: 700;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  color: var(--olive-800);
+}
